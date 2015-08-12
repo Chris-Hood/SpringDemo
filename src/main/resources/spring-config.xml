@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:component-scan base-package="demo.MonsterIntelligence"/>
+
+    <bean id="loc" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="location" value="classpath:application.properties"/>
+    </bean>
+
+    <bean class="org.springframework.beans.factory.config.ServiceLocatorFactoryBean" id="MonsterFactory"
+          p:serviceLocatorInterface="demo.MonsterFactory"/>
+
+    <bean id="Imp" class="demo.Monster" scope="prototype">
+        <property name="name" value="Imp"/>
+        <property name="hp" value="501"/>
+        <property name="damage" value="64"/>
+        <property name="speed" value="58"/>
+        <constructor-arg name="behavior" ref="Coward"/>
+    </bean>
+
+    <bean id="Angel" class="demo.Monster" scope="prototype">
+        <property name="name" value="Angel"/>
+        <property name="hp" value="1016"/>
+        <property name="damage" value="86"/>
+        <property name="speed" value="31"/>
+        <constructor-arg name="behavior" ref="Brave"/>
+    </bean>
+
+    <bean id="Ogre" class="demo.Monster" scope="prototype">
+        <property name="name" value="Ogre"/>
+        <property name="hp" value="816"/>
+        <property name="damage" value="96"/>
+        <property name="speed" value="27"/>
+        <constructor-arg name="behavior" ref="Bullish"/>
+    </bean>
+
+    <bean id="Troll" class="demo.Monster" scope="prototype">
+        <property name="name" value="Troll"/>
+        <property name="hp" value="925"/>
+        <property name="damage" value="71"/>
+        <property name="speed" value="30"/>
+        <constructor-arg name="behavior" ref="Insane"/>
+    </bean>
+
+    <bean id="Dragon" class="demo.Monster" scope="prototype">
+        <property name="name" value="Dragon"/>
+        <property name="hp" value="1334"/>
+        <property name="damage" value="104"/>
+        <property name="speed" value="32"/>
+        <constructor-arg name="behavior" ref="Brave"/>
+    </bean>
+
+    <bean id="Hero" class="demo.Monster" scope="prototype">
+        <property name="name" value="Hero"/>
+        <property name="hp" value="1000"/>
+        <property name="damage" value="97"/>
+        <property name="speed" value="30"/>
+        <constructor-arg name="behavior" ref="Manual"/>
+    </bean>
+
+    <bean id="Arena" class="demo.Arena" scope="prototype">
+        <constructor-arg>
+            <list>
+                <ref bean="Hero"/>
+                <ref bean="Imp"/>
+                <ref bean="Angel"/>
+                <ref bean="Ogre"/>
+                <ref bean="Troll"/>
+                <ref bean="Dragon"/>
+            </list>
+        </constructor-arg>
+    </bean>
+</beans>
