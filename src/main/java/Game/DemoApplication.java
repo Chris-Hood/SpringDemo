@@ -9,9 +9,9 @@ public class DemoApplication {
     public static void main(String[] args) {
         ApplicationContext context =
                 new ClassPathXmlApplicationContext("spring-config.xml");
-        MonsterFactory fact = (MonsterFactory) context.getBean("MonsterFactory");
+        MonsterFactory fact = (MonsterFactory) context.getBean("monsterFactory");
 
-        Arena arena = fact.getArena("Arena");
+        Arena arena = fact.getArena("arena");
         arena.start();
     }
 }
