@@ -1,6 +1,6 @@
 package Game.Entities.Behaviors;
 
-import Game.Entities.Monster;
+import Game.Entities.Entity;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -12,8 +12,8 @@ import java.util.List;
 public class Brave extends BaseBehavior {
 
     @Override
-    public void takeTurn(Monster actor, List<Monster> targetList) {
-        Monster target = targetList.stream().max((m1, m2) -> (m1.getHp() + m1.getDamage() + m1.getSpeed()) - (m2.getHp() + m2.getDamage() + m2.getSpeed())).get();
+    public void takeTurn(Entity actor, List<Entity> targetList) {
+        Entity target = targetList.stream().max((m1, m2) -> (m1.getHp() + m1.getDamage() + m1.getSpeed()) - (m2.getHp() + m2.getDamage() + m2.getSpeed())).get();
         actionFactory.getAttack(actor).Act(target);
     }
 }

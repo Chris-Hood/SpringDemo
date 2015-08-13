@@ -1,10 +1,10 @@
 package Game.Entities.Actions;
 
-import Game.Entities.Monster;
+import Game.Entities.Entity;
 
 /**
  * Created by Chris on 8/8/2015.
  */
 public interface Action {
-    void Act(Monster target);
+    void Act(Entity target);
 }

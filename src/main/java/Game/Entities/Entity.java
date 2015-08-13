@@ -10,7 +10,7 @@ import java.util.Random;
  * Created by Chris on 8/5/2015.
  */
 @Service
-public class Monster {
+public class Entity {
     private String name;
     private int damage;
     private int hp;
@@ -56,12 +56,12 @@ public class Monster {
         this.hp = hp;
     }
 
-    public Monster(Behavior behavior) {
+    public Entity(Behavior behavior) {
         this.behavior = behavior;
         id = nextId++;
     }
 
-    public void act(List<Monster> targets) {
+    public void act(List<Entity> targets) {
         behavior.takeTurn(this, targets);
     }
 

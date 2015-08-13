@@ -1,6 +1,6 @@
 package Game.Entities.Behaviors;
 
-import Game.Entities.Monster;
+import Game.Entities.Entity;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -15,8 +15,8 @@ public class Insane extends BaseBehavior {
     private static Random random = new Random();
 
     @Override
-    public void takeTurn(Monster actor, List<Monster> targetList) {
-        List<Monster> targets = new ArrayList<>(targetList);
+    public void takeTurn(Entity actor, List<Entity> targetList) {
+        List<Entity> targets = new ArrayList<>(targetList);
         targets.add(actor);
         getActionFactory().getAttack(actor).Act(targets.get(random.nextInt(targets.size())));
     }

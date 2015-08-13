@@ -1,7 +1,7 @@
 package Game.Entities.Behaviors;
 
 import Game.Entities.Actions.ActionFactory;
-import Game.Entities.Monster;
+import Game.Entities.Entity;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -13,5 +13,6 @@ import java.util.List;
 public interface Behavior {
 
     ActionFactory getActionFactory();
-    void takeTurn(Monster actor, List<Monster> targetList);
+
+    void takeTurn(Entity actor, List<Entity> targetList);
 }

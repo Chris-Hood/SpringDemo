@@ -1,6 +1,6 @@
 package Game.Entities.Actions;
 
-import Game.Entities.Monster;
+import Game.Entities.Entity;
 
 import java.util.Random;
 
@@ -9,15 +9,15 @@ import java.util.Random;
  */
 public class Attack implements Action {
     private Random random;
-    private Monster actor;
+    private Entity actor;
 
-    public Attack(Monster actor, Random random) {
+    public Attack(Entity actor, Random random) {
         this.actor = actor;
         this.random = random;
     }
 
     @Override
-    public void Act(Monster target) {
+    public void Act(Entity target) {
         int hp = target.getHp();
         int variance = actor.getDamage() / 4;
         int damageRoll = actor.getDamage() + random.nextInt(variance);

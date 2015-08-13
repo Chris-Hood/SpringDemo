@@ -1,6 +1,6 @@
 package Game.Entities.Actions;
 
-import Game.Entities.Monster;
+import Game.Entities.Entity;
 import org.springframework.stereotype.Component;
 
 import java.util.Random;
@@ -13,7 +13,7 @@ public class ActionFactory {
 
     private static Random random = new Random();
 
-    public Action getAttack(Monster actor) {
+    public Action getAttack(Entity actor) {
         return new Attack(actor, random);
     }
 }

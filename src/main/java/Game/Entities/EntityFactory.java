@@ -5,8 +5,8 @@ import Game.Arena;
 /**
  * Created by Chris on 8/7/2015.
  */
-public interface MonsterFactory {
+public interface EntityFactory {
 
-    Monster getMonster(String type);
+    Entity getMonster(String type);
     Arena getArena(String type);
 }

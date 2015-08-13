@@ -1,6 +1,6 @@
 package Game;
 
-import Game.Entities.Monster;
+import Game.Entities.Entity;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -11,19 +11,19 @@ import static java.lang.Thread.sleep;
  * Created by Chris on 8/5/2015.
  */
 public class Arena {
-    private List<Monster> monsters;
+    private List<Entity> entities;
     private Random random = new Random();
 
-    public Arena(List<Monster> monsterList) {
-        monsters = monsterList.stream().collect(Collectors.toList());
+    public Arena(List<Entity> entityList) {
+        entities = entityList.stream().collect(Collectors.toList());
     }
 
     public void start() {
-        while (monsters.size() > 1) {
+        while (entities.size() > 1) {
             printMonsters();
             takeTurn();
-            if (monsters.size() == 1) {
-                System.out.println("WINNER is: " + monsters.get(0).getName() + " with " + monsters.get(0).getHp() + " hp left.");
+            if (entities.size() == 1) {
+                System.out.println("WINNER is: " + entities.get(0).getName() + " with " + entities.get(0).getHp() + " hp left.");
             }
 
             try {
@@ -36,22 +36,22 @@ public class Arena {
     }
 
     private void printMonsters() {
-        for (Monster monster : monsters) {
-            System.out.println(monster.getId() + ": " + monster.getName() + ", hp " + monster.getHp());
+        for (Entity entity : entities) {
+            System.out.println(entity.getId() + ": " + entity.getName() + ", hp " + entity.getHp());
         }
     }
 
     private void takeTurn() {
-        PriorityQueue<Monster> monsterTurn = new PriorityQueue<>(
-                (Monster m1, Monster m2) -> m2.speedRoll() - m1.speedRoll());
+        PriorityQueue<Entity> entityTurn = new PriorityQueue<>(
+                (Entity m1, Entity m2) -> m2.speedRoll() - m1.speedRoll());
 
-        monsterTurn.addAll(monsters);
+        entityTurn.addAll(entities);
 
-        while (!monsterTurn.isEmpty()) {
-            Monster actor = monsterTurn.remove();
+        while (!entityTurn.isEmpty()) {
+            Entity actor = entityTurn.remove();
             if (actor.isDead()) continue;
 
-            List<Monster> targets = getTargets(actor.getId());
+            List<Entity> targets = getTargets(actor.getId());
             if (targets.isEmpty()) continue;
 
             try {
@@ -62,10 +62,10 @@ public class Arena {
 
             actor.act(targets);
         }
-        monsters = monsters.stream().filter(monster -> !monster.isDead()).collect(Collectors.toList());
+        entities = entities.stream().filter(monster -> !monster.isDead()).collect(Collectors.toList());
     }
 
-    private List<Monster> getTargets(final int id) {
-        return monsters.stream().filter(monster -> (monster.getId() != id) && (!monster.isDead())).collect(Collectors.toList());
+    private List<Entity> getTargets(final int id) {
+        return entities.stream().filter(monster -> (monster.getId() != id) && (!monster.isDead())).collect(Collectors.toList());
     }
 }

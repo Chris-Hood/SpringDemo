@@ -1,6 +1,6 @@
 package Game.Entities.Behaviors;
 
-import Game.Entities.Monster;
+import Game.Entities.Entity;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -13,7 +13,7 @@ import java.util.Scanner;
 public class Manual extends BaseBehavior {
 
     @Override
-    public void takeTurn(Monster actor, List<Monster> targetList) {
+    public void takeTurn(Entity actor, List<Entity> targetList) {
         System.out.println(actor.getName() + "'s turn.  Select a target.");
 
         Scanner reader = new Scanner(System.in);
