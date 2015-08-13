@@ -1,5 +1,6 @@
-package demo;
+package Game;
 
+import Game.Entities.MonsterFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 

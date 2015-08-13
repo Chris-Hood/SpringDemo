@@ -1,8 +1,6 @@
-package demo.MonsterIntelligence;
+package Game.Entities.Actions;
 
-import demo.Monster;
-
-import java.util.List;
+import Game.Entities.Monster;
 
 /**
  * Created by Chris on 8/8/2015.

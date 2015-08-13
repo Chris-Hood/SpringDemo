@@ -1,5 +1,6 @@
-package demo.MonsterIntelligence;
+package Game.Entities.Behaviors;
 
+import Game.Entities.Actions.ActionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**

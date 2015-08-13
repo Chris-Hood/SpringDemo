@@ -4,16 +4,17 @@
        xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <context:component-scan base-package="demo.MonsterIntelligence"/>
+    <context:component-scan base-package="Game.Entities.Actions"/>
+    <context:component-scan base-package="Game.Entities.Behaviors"/>
 
     <bean id="loc" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
         <property name="location" value="classpath:application.properties"/>
     </bean>
 
     <bean class="org.springframework.beans.factory.config.ServiceLocatorFactoryBean" id="MonsterFactory"
-          p:serviceLocatorInterface="demo.MonsterFactory"/>
+          p:serviceLocatorInterface="Game.Entities.MonsterFactory"/>
 
-    <bean id="Imp" class="demo.Monster" scope="prototype">
+    <bean id="Imp" class="Game.Entities.Monster" scope="prototype">
         <property name="name" value="Imp"/>
         <property name="hp" value="501"/>
         <property name="damage" value="64"/>
@@ -21,7 +22,7 @@
         <constructor-arg name="behavior" ref="Coward"/>
     </bean>
 
-    <bean id="Angel" class="demo.Monster" scope="prototype">
+    <bean id="Angel" class="Game.Entities.Monster" scope="prototype">
         <property name="name" value="Angel"/>
         <property name="hp" value="1016"/>
         <property name="damage" value="86"/>
@@ -29,7 +30,7 @@
         <constructor-arg name="behavior" ref="Brave"/>
     </bean>
 
-    <bean id="Ogre" class="demo.Monster" scope="prototype">
+    <bean id="Ogre" class="Game.Entities.Monster" scope="prototype">
         <property name="name" value="Ogre"/>
         <property name="hp" value="816"/>
         <property name="damage" value="96"/>
@@ -37,7 +38,7 @@
         <constructor-arg name="behavior" ref="Bullish"/>
     </bean>
 
-    <bean id="Troll" class="demo.Monster" scope="prototype">
+    <bean id="Troll" class="Game.Entities.Monster" scope="prototype">
         <property name="name" value="Troll"/>
         <property name="hp" value="925"/>
         <property name="damage" value="71"/>
@@ -45,7 +46,7 @@
         <constructor-arg name="behavior" ref="Insane"/>
     </bean>
 
-    <bean id="Dragon" class="demo.Monster" scope="prototype">
+    <bean id="Dragon" class="Game.Entities.Monster" scope="prototype">
         <property name="name" value="Dragon"/>
         <property name="hp" value="1334"/>
         <property name="damage" value="104"/>
@@ -53,7 +54,7 @@
         <constructor-arg name="behavior" ref="Brave"/>
     </bean>
 
-    <bean id="Hero" class="demo.Monster" scope="prototype">
+    <bean id="Hero" class="Game.Entities.Monster" scope="prototype">
         <property name="name" value="Hero"/>
         <property name="hp" value="1000"/>
         <property name="damage" value="97"/>
@@ -61,7 +62,7 @@
         <constructor-arg name="behavior" ref="Manual"/>
     </bean>
 
-    <bean id="Arena" class="demo.Arena" scope="prototype">
+    <bean id="Arena" class="Game.Arena" scope="prototype">
         <constructor-arg>
             <list>
                 <ref bean="Hero"/>

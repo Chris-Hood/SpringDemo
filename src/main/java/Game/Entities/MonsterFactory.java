@@ -1,4 +1,6 @@
-package demo;
+package Game.Entities;
+
+import Game.Arena;
 
 /**
  * Created by Chris on 8/7/2015.

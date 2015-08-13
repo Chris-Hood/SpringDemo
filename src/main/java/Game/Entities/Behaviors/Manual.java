@@ -1,6 +1,6 @@
-package demo.MonsterIntelligence;
+package Game.Entities.Behaviors;
 
-import demo.Monster;
+import Game.Entities.Monster;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

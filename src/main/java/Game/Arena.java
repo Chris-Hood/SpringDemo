@@ -1,4 +1,6 @@
-package demo;
+package Game;
+
+import Game.Entities.Monster;
 
 import java.util.*;
 import java.util.stream.Collectors;
